@@ -27,9 +27,6 @@ def data_visual():
                             'Histogram'])
 
     if r_step == 'Line Graph':
-        # Importing penguin.csv example dataset 
-        st.markdown('<h2 style="color:red"> hello world</h2>', unsafe_allow_html=True)
-        
         with st.echo():
             flights = sns.load_dataset('flights')
             
@@ -40,6 +37,7 @@ def data_visual():
             ax.set_title('Passenger Count every year', fontweight = 'demibold', fontsize = 17)
             ax.set_xlabel('Month', fontsize = 12)
             ax.set_ylabel('Passenger Count', fontsize = 12)
+            
             st.pyplot(fig_1)
 
 # Main
@@ -49,5 +47,4 @@ sb_step = st.sidebar.radio('',
                         'Data Cleaning', 'Data Wrangling'])
 
 if sb_step == 'Data Visualization':
-     data_visual()zation':
      data_visual()
