@@ -28,8 +28,7 @@ def data_visual():
 
     if r_step == 'Line Graph':
         # Importing penguin.csv example dataset 
-        st.markdown('<h2 style="color:red"> hello world</h2>', unsafe_allow_html=True)
-
+        
         with st.echo():
             flights = sns.load_dataset('flights')
             
