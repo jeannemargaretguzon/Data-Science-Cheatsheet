@@ -49,4 +49,5 @@ sb_step = st.sidebar.radio('',
                         'Data Cleaning', 'Data Wrangling'])
 
 if sb_step == 'Data Visualization':
+     data_visual()zation':
      data_visual()
