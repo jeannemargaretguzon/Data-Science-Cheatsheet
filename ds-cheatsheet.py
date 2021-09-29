@@ -1,11 +1,8 @@
-from re import T
 from threading import setprofile
 from types import FunctionType
 
 import streamlit as st
 import Data_Visual as dv
-
-st.set_page_config(layout="wide")
 
 st.sidebar.markdown("""
     <h1 style=><b>DATA SCIENCE CHEATSHEET<b></h1>

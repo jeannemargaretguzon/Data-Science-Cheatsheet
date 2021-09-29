@@ -1,35 +1,6 @@
-        
-  
-        
-            ## COLOR GUIDES
-
-            * Be mindful of colorblindness. Don't use color combinations that are hard on color blind individuals.
-
-            ## FONT GUIDE
-            * It's recommended to use **San Serif** 
-            * Keep the font and its sizes consistent throughout the presentation
-            * You can change headers/title to a larger size for better readibility
-
-            *Language Used: Python*
-  
-    elif chapter == 'Visualization Graphs':
-        r_step = st.selectbox('Visualization Graphs', 
-                            ['Line Graph', 'Bar Graph', 'Horizontal Bar Graph', 
-                            'Stacked Bar Graph', 'Box Plot',
-                            'Scatter Plot', 'Bubble Plot', 'Histogram'])
-        if r_step == 'Line Graph':
-            "# Line Graph"
-            st.markdown("""
-                ## Recommended for:
-                <ul><li>Tracking changes over periods of time\
-                <hr>
-            """, unsafe_allow_html=True)
             
-            "### *Example*: "
-            "Using Seaborn: "
+
             with st.echo():
-                flights = sns.load_dataset('flights') # Example dataset from Seaborn 
-                sns.set_style('whitegrid')
 
                 fig = plt.figure(figsize=(20, 6))
                 
