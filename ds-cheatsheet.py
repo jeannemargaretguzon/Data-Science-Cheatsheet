@@ -11,7 +11,7 @@ st.sidebar.markdown("""
 """, unsafe_allow_html=True)
 
 option = st.sidebar.radio('Topics', 
-                        ['Data Visualization', 'Data Cleaning'])
+                        ['Data Visualization'])
 
 if option == 'Data Visualization':
     chapter = st.selectbox("Table of Contents",
