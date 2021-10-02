@@ -16,31 +16,47 @@ def data_visual(chapter):
         intro()
     elif chapter == 'Visualization Graphs':
         visual()
+    elif chapter == 'Subplotting':
+        subplot()
 
 def intro():
     "# GENERAL GUIDES TO VISUALIZATION" 
     "*Language used: Python*"
-    st.markdown(""" 
+    st.title("Guides in Making Graphs")
+    st.markdown("""
+    ### How to start?
     <ol><li> Create a list of questions your visuals need to answer.
         <li> What feature of your questions that the visuals need to show?
         <li> Select what type of graph based on the highlighted features.
     """, unsafe_allow_html=True)
+
+    st.markdown("""
+    ### Graph Guides
+    <ul><li>Order the visualization graphs in logical and reasonable manner.
+        <li>When using legends, display the variables from highest to lowest.
+        <li>Always put labels on axis
+        <li>Maintain consistent ticks and axes
+            <ul><li>Ticks are intervals. Like measurement lines from a ruler.
+                <li>Axes are the horizontal axis (x-axis) and vertical axis (y-axis).
+    """, unsafe_allow_html=True)
         
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown("### Color Guides")
-        st.write(""" 
-        Be mindful of colorblindness. 
-        Don't use color combinations that are hard on color blind individuals.
-        """)
-        # Add color combinations later
-    with col2:
-        st.markdown("### Font Guides")
-        st.markdown("""
-        <ul><li>It's recommended to use <b>San Serif
-            <li>Keep the font and its sizes consistent throughout the presentation
-            <li>You can change headers/title to a larger size for better readibility
-        """, unsafe_allow_html=True)
+    st.markdown("""
+    ### Color Guides 
+    <ul><li>Be mindful of colorblindness.
+        <li>Use neutral or white color for background and grid lines. 
+        <li>If representing continous data or single category of data, use lighter colors for lower values, and darker values for higher values.
+        <li>If representing categorical data, different colors can be used as long as they don't overpower each other. 
+        <li>Try to avoid contrasting color.
+        <li>If placing text inside the graph, adjust the contrast accordingly for better readability 
+    """, unsafe_allow_html=True)
+    # Add color combinations later
+    
+    st.markdown("""
+    ### Font Guides
+    <ul><li>Keep the font and its sizes consistent throughout the presentation.
+        <li>You can change headers/title to a larger size for better readibility.
+    """, unsafe_allow_html=True)
+    
 
 def visual():
     r_step = st.selectbox('Visualization Graphs', 
@@ -311,3 +327,46 @@ def histogram():
         ax.set_title('Penguin Living Spaces', fontweight = 'demibold', fontsize = 17)
         ax.set(xlabel='Living Spaces', ylabel='Penguin Population') 
     st.pyplot(fig2)        
+
+def add_code():
+    st.markdown("## Additional Visualization Customizations")
+
+    st.subheader("Using Matplotlib")
+    st.markdown(
+    """
+    ###### For setting location and labels of x-axis
+        plt.xticks(ticks=None, labels=None, **kwargs)
+        plt.yticks(ticks=None, labels=None, **kwargs)
+    """)
+
+    st.subheader("Using Seaborn")
+
+def subplot():
+    st.title("Subplotting")
+    st.markdown("Drawing multiple graphs in one figure")
+    
+    st.text("Importing data...")
+    with st.echo():
+        penguin = sns.load_dataset('penguins') # Example dataset from Seaborn
+        sns.set_style('whitegrid')
+
+    st.markdown("### Using Seaborn")
+    with st.echo():
+        fig, axes = plt.subplots(1, 3, sharex = True, figsize = (30, 10))
+
+        sns.barplot(ax = axes[0], x = 'species', y = 'flipper_length_mm', data = penguin, ci = None, color ='#FFEB3B')
+        axes[0].set_title('Which Penguin Species has longer flipper?', fontweight = 'demibold', fontsize = 17)
+        axes[0].set_xlabel('Body Mass (in g)', fontsize = 12)
+        axes[0].set_ylabel('Flipper Length (in mm)', fontsize = 12)
+
+        sns.barplot(ax = axes[1], x = 'species', y = 'bill_length_mm', data = penguin, ci = None, color ='#FFEB3B')
+        axes[1].set_title('Which Penguin Species has longer bill?', fontweight = 'demibold', fontsize = 17)
+        axes[1].set_xlabel('Body Mass (in g)', fontsize = 12)
+        axes[1].set_ylabel('Bill Length (in mm)', fontsize = 12)
+
+        sns.barplot(ax = axes[2], x = 'species', y = 'bill_depth_mm', data = penguin, ci = None, color ='#FFEB3B')
+        axes[2].set_title('Which Penguin Species has larger bill?', fontweight = 'demibold', fontsize = 17)
+        axes[2].set_xlabel('Body Mass (in g)', fontsize = 12)
+        axes[2].set_xlabel('Bill Depth (in mm)', fontsize = 12)
+    st.pyplot(fig)
+
