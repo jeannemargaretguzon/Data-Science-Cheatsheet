@@ -15,5 +15,5 @@ option = st.sidebar.radio('Topics',
 
 if option == 'Data Visualization':
     chapter = st.selectbox("Table of Contents",
-                    ['Introduction', 'Visualization Graphs'])
+                    ['Introduction', 'Visualization Graphs', 'Subplotting'])
 dv.data_visual(chapter) # Data_Visual.py
